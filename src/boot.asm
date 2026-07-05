@@ -18,9 +18,4 @@ extern kmain
 _start:
     cli         
     call kmain  
-    hlt         ; Trava o processador se o kmain retornar
-
-
-
-
-
+    hlt         
