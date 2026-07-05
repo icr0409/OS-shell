@@ -1,5 +1,2 @@
-*.o
-*.bin
-*.img
-*.iso
+build/
 .vscode/
