@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdbool.h>
 #include <stdint.h>
 
 #define VGA_WIDTH  80
@@ -25,7 +26,7 @@ enum vga_color {
 	VGA_COLOR_WHITE 		= 0xF,
 };
 
-void vga_init(void);
+bool vga_init(void);
 
 void vga_print(const char* string);
 void vga_clear(void);

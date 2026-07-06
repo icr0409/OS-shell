@@ -18,11 +18,13 @@ static uint16_t get_index(uint8_t x, uint8_t y);
 static uint8_t get_color(enum vga_color fg, enum vga_color bg);
 static uint16_t get_entry(uint8_t color, char c);
 
-void vga_init(void) {
+bool vga_init(void) {
 	vga_color_set_fg(VGA_COLOR_LIGHT_GREY);
 	vga_color_set_bg(VGA_COLOR_BLACK);
 	vga_cursor_enable();
 	vga_clear();
+
+    return true;
 }
 
 void vga_print(const char* s) {
