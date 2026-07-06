@@ -17,5 +17,7 @@ extern kmain
 
 _start:
     cli         
-    call kmain  
-    hlt         
+    push ebx
+     push eax
+    call kmain
+hlt

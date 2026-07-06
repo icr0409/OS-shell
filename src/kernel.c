@@ -28,14 +28,18 @@ bool kinit(void) {
 	return sucess;
 }
 
-void kmain(void) {
-	if (!kinit()) {
-		kpanic("Failed to initialize kernel!");
-	}
+void kmain(unsigned long magic, unsigned long addr) {
+       // Opcional: apenas para evitar aviso de variável não usada ai quando for mexer cuidado 
+       (void)magic;
+       (void)addr;
 
-	vga_print("hello, kernel!");
+       if (!kinit()) {
+               kpanic("Failed to initialize kernel!");
+       }
 
-	while (1);
+       vga_print("hello, kernel!");
+
+       while (1);
 }
 
 static inline void hang(void) {
