@@ -3,6 +3,8 @@ AS = nasm
 LD = ld
 GRUB_MKRESCUE = grub-mkrescue
 
+PROJECT_NAME = "os-shell"
+
 SRC_DIR    = src
 INC_DIR    = include
 GRUB_DIR   = grub
@@ -17,9 +19,9 @@ ASM_OBJS = $(patsubst $(SRC_DIR)/%.asm,$(BUILD_DIR)/%.asm.o,$(ASM_SRCS))
 
 OBJ = $(ASM_OBJS) $(C_OBJS)
 
-LINKER     = $(SRC_DIR)/linker.ld
-KERNEL_BIN = $(BUILD_DIR)/os-shell.bin
-ISO        = $(BUILD_DIR)/os-shell.iso
+LINKER     = linker.ld
+KERNEL_BIN = $(BUILD_DIR)/$(PROJECT_NAME).bin
+ISO        = $(BUILD_DIR)/$(PROJECT_NAME).iso
 
 QEMU = qemu-system-i386
 QEMU_FLAGS = \
@@ -61,7 +63,7 @@ $(KERNEL_BIN): $(OBJ) $(LINKER)
 
 $(ISO): $(KERNEL_BIN)
 	mkdir -p $(ISO_DIR)/boot/grub
-	cp $(KERNEL_BIN) $(ISO_DIR)/boot/os-shell.bin
+	cp $(KERNEL_BIN) $(ISO_DIR)/boot/$(PROJECT_NAME).bin
 	cp $(GRUB_DIR)/grub.cfg $(ISO_DIR)/boot/grub/grub.cfg
 	$(GRUB_MKRESCUE) -o $@ $(ISO_DIR)
 
