@@ -38,5 +38,5 @@ enum vga_color vga_color_get_fg(void);
 void vga_cursor_move(uint8_t x, uint8_t y);
 uint8_t vga_cursor_get_x(void);
 uint8_t vga_cursor_get_y(void);
-void vga_cursor_show(void);
-void vga_cursor_hide(void);
+void vga_cursor_enable(void);
+void vga_cursor_disable(void);
