@@ -38,6 +38,7 @@ void kmain(unsigned long magic, unsigned long addr) {
        }
 
        vga_print("hello, kernel!");
+	  vga_print("\n OS-shell>");
 
        while (1);
 }
