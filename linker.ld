@@ -18,8 +18,9 @@ SECTIONS
     {
         _rodata_start = .;
         *(.rodata)
-        _rodata_end = .;
-    }
+ _data_end = .;   
+
+ }
 
     .data BLOCK(4K) : ALIGN(4K)
     {

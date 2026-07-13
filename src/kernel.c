@@ -1,9 +1,11 @@
 #include "drivers/vga.h"
 #include "kernel.h"
 #include <stdbool.h>
+#include "drivers/vga.h"
+#include "drivers/gdt.h"
 
 static inline void hang(void);
-
+void inicializar_filtro(void);
 void kpanic(const char* msg) {
 	vga_color_set_bg(VGA_COLOR_BLACK);
 	vga_color_set_fg(VGA_COLOR_LIGHT_GREY);
@@ -29,13 +31,14 @@ bool kinit(void) {
 }
 
 void kmain(unsigned long magic, unsigned long addr) {
-       // Opcional: apenas para evitar aviso de variável não usada ai quando for mexer cuidado 
        (void)magic;
        (void)addr;
 
        if (!kinit()) {
                kpanic("Failed to initialize kernel!");
        }
+gdt_init();
+inicializar_filtro();
 
        vga_print("hello, kernel!");
 	  vga_print("\n OS-shell>");
