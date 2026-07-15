@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "drivers/vga.h"
 #include "drivers/gdt.h"
+#include "drivers/pmm.h"
 
 static inline void hang(void);
 void inicializar_filtro(void);
@@ -38,6 +39,8 @@ void kmain(unsigned long magic, unsigned long addr) {
                kpanic("Failed to initialize kernel!");
        }
 gdt_init();
+pmm_init(); 
+ void* memoria = pmm_alocar_pagina(); 
 inicializar_filtro();
 
        vga_print("hello, kernel!");
